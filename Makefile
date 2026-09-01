@@ -2,7 +2,7 @@
 LIB_NAME  := biscuit
 
 # Tools
-CC        ?= gcc
+CC        = gcc
 AR        ?= ar
 ARFLAGS   ?= rcs
 LDFLAGS   ?= -shared

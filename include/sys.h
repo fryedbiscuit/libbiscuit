@@ -38,3 +38,8 @@ long bc_write(long fd, char* buffer, long count);
 long bc_read(long fd, char* buffer, long count);
 void* bc_mmap(void* addr, size_t length, int prot, int flags,int fd, size_t offset) ;
 int bc_munmap(void* addr, size_t len);
+
+void* bc_memset(void* addr, i32 byte, size_t lenght);
+void* bc_memcpy(void* dst, const void* src, size_t size);
+char* bc_strncpy(char* dst, const char* src, size_t dsize);
+size_t bc_strlen(const char* str);

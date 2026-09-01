@@ -4,7 +4,7 @@
 // allocation and freeing are recursive functions
 
 #include "inc/biscuit.h"
-#include "inc/libc.h"
+#include "inc/sys.h"
 
 #define ALIGN_16(size) (((size) + 15) & ~15)
 

@@ -1,6 +1,7 @@
 #include "inc/biscuit.h"
-#include "inc/libc.h"
 #include "inc/sys.h"
+#include <stdarg.h>
+
 const char charset[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
 char* strrev(char* str, char* dst){
@@ -101,24 +102,19 @@ void hexprint(char* buf, size_t len) {
 }
 
 //TODO remake cat so it doesnt depend on libc, while keeping it performant
-// size_t cat(u32 count, ...) {
-//   // prints any number of strings.
-//   // last argument has to be NULL
-//
-//   char *str = NULL;
-//   u32 cnum = 0;
-//   va_list args;
-//
-//   va_start(args, count);
-//
-//   while (count) {
-// 	str = va_arg(args, char *);
-//     cnum += fwrite(str, sizeof(char),strlen(str), stdout);
-// 	count--;
-//   }
-//
-//   va_end(args);
-//
-//   fflush(stdout);
-//   return cnum;
-// }
+size_t fcat(int fd, ...) {
+   	// prints any number of strings to a file descriptor.
+   	// last argument has to be NULL
+	char* str = NULL;
+	size_t cnum = 0;
+ 	va_list args;
+	va_start(args, fd);
+
+	while (true){
+		str = va_arg(args, char *);
+		cnum += bc_write(fd,str,bc_strlen(str));
+	}
+
+	va_end(args);
+	return cnum;
+}

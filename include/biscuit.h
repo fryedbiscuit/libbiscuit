@@ -1,3 +1,8 @@
+// Include standard, freestanding, headers
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+
 // This is the API of my library
 #ifndef BISCUIT_H
 #define BISCUIT_H
@@ -9,33 +14,23 @@
 #define FNV_PRIME_64 ((1ULL << 40) + (1ULL << 8) + 0xb3)
 
 // Sized integers
-typedef signed char i8;
-typedef unsigned char u8;
-typedef signed short i16;
-typedef unsigned short u16;
-typedef signed int i32;
-typedef unsigned int u32;
-typedef signed long i64;
-typedef unsigned long u64;
+typedef int8_t i8;
+typedef uint8_t u8;
+typedef int16_t i16;
+typedef uint16_t u16;
+typedef int32_t i32;
+typedef uint32_t u32;
+typedef int64_t i64;
+typedef uint64_t u64;
 
-typedef u64 size_t;
 typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned int uint;
 typedef unsigned long ulong;
 
-typedef int _bool;
-#define bool _bool
-#define true 1
-#define false 0
-
 #define STDIN 0
 #define STDOUT 1
 #define STDERR 2
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 #define ALIGN_16(size) (((size) + 15) & ~15)
 
